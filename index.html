@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>E.G.O 기프트 도감</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  
+  <!-- 랜덤이미지 먼저 로딩 -->
+  <img id="random_preload_ego" class="preload_img" fetchpriority="high">
+  <img id="random_preload_tier" class="preload_img" fetchpriority="high">
+  <img id="random_preload_type" class="preload_img" fetchpriority="high">
+  
+<!-- 상단 여백 -->
+<div id="loading_box"><div>
+  <div><div id="random_frame"><div id="random_img"></div></div><div id="loader"></div></div>
+  <br>
+  <div class="font2">페이지 불러오는 중...</div>
+  <div class="loading-progress-container">
+    <div class="loading-progress-bar" id="loading_progress"></div>
+  </div>
+  <button onclick="delete_loading()" id="skip_loading">그냥 빨리 보여주세요</button>
+  </div>
+</div>
+  
+  <!-- 제목 -->
+  <p class="font2" style="font-size: min(2rem, 6vmin); margin: 30px 0 10px 0; position: relative; z-index: 5;">E.G.O 기프트 도감</p>
+
+  <!-- 설정 -->
+  
+  <div id="setting_box">
+    <div>
+      <div class="close" onclick="setting_popup()">✕</div>
+      <a class="font2" style="font-size: 2rem;">OPTION</a><br><br>
+      <table>
+        <tr class="type1">
+          <td colspan="2"><label onclick="name_check()"><input type="checkbox" class="checkstyle_1" checked id="name_check">E.G.O 기프트 이름 표시</label></td>
+        </tr>
+        <tr class="type1">
+          <td colspan="2"><label onclick="filter_naming()"><input type="checkbox" class="checkstyle_1" checked id="filter_naming">필터 버튼 자세히 표시</label></td>
+        </tr>
+        <tr class="type1">
+          <td colspan="2"> </td>
+        </tr>
+        <tr class="type2">
+          <td>한 줄에 표시되는 기프트 개수 (최대 10, 기본값 5) </td>
+          <td><div onclick="grid_check('down')" class="optionbutton" style="border-radius: 50% 0 0 50%;">-</div><div id="grid_count" class="optionmiddle">5</div><div onclick="grid_check('up')" class="optionbutton" style="border-radius: 0 50% 50% 0;">+</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="big-frame">
+    <!-- 필터 옵션 -->
+    <div class="main-container">
+      <div class="options">
+        <div class="setting" onclick="setting_popup()"></div>
+        <a class="font2">키워드 필터</a><br>
+        <div>
+          <label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type01"><img src="./images/ui/type01.webp"><a class="filter_name"> 화상</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type02"><img src="./images/ui/type02.webp"><a class="filter_name"> 출혈</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type03"><img src="./images/ui/type03.webp"><a class="filter_name"> 진동</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type04"><img src="./images/ui/type04.webp"><a class="filter_name"> 파열</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type05"><img src="./images/ui/type05.webp"><a class="filter_name"> 침잠</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type06"><img src="./images/ui/type06.webp"><a class="filter_name"> 호흡</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type07"><img src="./images/ui/type07.webp"><a class="filter_name"> 충전</a></label>
+        </div>
+        <div>
+          <label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type11"><img src="./images/ui/type11.webp"><a class="filter_name"> 참격</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type12"><img src="./images/ui/type12.webp"><a class="filter_name"> 관통</a></label><label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_type13"><img src="./images/ui/type13.webp"><a class="filter_name"> 타격</a></label>
+        </div>
+        <div>
+          <label class="filterbutton"><input type="checkbox" onclick="filter_div()" id="check_none99"><a>범용</a></label>
+        </div>
+        <div>
+          <label class="clearbutton"><input type="checkbox" onclick="filter_clear()" id="filter_clear"><a class="filter_name">필터 </a><a>초기화</a></label>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 본문 -->
+    <div class="main-container" id="egobox" style="max-width: 650px; width: 100%;">
+      <div class="egolist">
+
+        <!-- 시거던 -->
+        
+        <div><div class="ego-0001 tier2 type01 egoback main-ego"></div><p class="egoname font2">지옥나비의 꿈</p></div>
+        <div><div class="ego-0002 tier1 none99 egoback main-ego"></div><p class="egoname font2">도착증</p></div>
+        <div><div class="ego-0003 tier1 type01 egoback main-ego"></div><p class="egoname font2">재에서 재로</p></div>
+        <div><div class="ego-0004 tier1 none99 egoback main-ego"></div><p class="egoname font2">혈액 포집팩</p></div>
+        <div><div class="ego-0005 tier2 type02 egoback main-ego"></div><p class="egoname font2">상처붙이</p></div>
+        
+        <div><div class="ego-0006 tier2 none99 egoback main-ego"></div><p class="egoname font2">커피와 종이학</p></div>
+        <div><div class="ego-0007 tier2 none99 egoback main-ego"></div><p class="egoname font2">주홍 나방떼</p></div>
+        <div><div class="ego-0008 tier1 type02 egoback main-ego"></div><p class="egoname font2">늘어붙은 쇠말뚝</p></div>
+        <div><div class="ego-0009 tier2 type01 egoback main-ego"></div><p class="egoname font2">작열우모</p></div>
+        <div><div class="ego-0010 tier1 none99 egoback main-ego"></div><p class="egoname font2">블러디 가젯</p></div>
+    
+        <div><div class="ego-0011 tier3 none99 egoback main-ego"></div><p class="egoname font2">여우비</p></div>
+        <div><div class="ego-0012 tier2 type13 egoback main-ego"></div><p class="egoname font2">오늘의 표정</p></div>
+        <div><div class="ego-0013 tier1 type04 egoback main-ego"></div><p class="egoname font2">부적 묶음</p></div>
+        <div><div class="ego-0014 tier3 none99 egoback main-ego"></div><p class="egoname font2">녹슨 기념 주화</p></div>
+        <div><div class="ego-0015 tier2 none99 egoback main-ego"></div><p class="egoname font2">고혈</p></div>
+    
+        <div><div class="ego-0016 tier1 type03 egoback main-ego"></div><p class="egoname font2">초록빛 결실</p></div>
+        <div><div class="ego-0017 tier1 none99 egoback main-ego"></div><p class="egoname font2">문자 석판</p></div>
+        <div><div class="ego-0018 tier1 type04 egoback main-ego"></div><p class="egoname font2">장미 면류관</p></div>
+        <div><div class="ego-0019 tier1 type12 egoback main-ego"></div><p class="egoname font2">끈적거리는 진액</p></div>
+        <div><div class="ego-0020 tier2 type02 egoback main-ego"></div><p class="egoname font2">흰 목화</p></div>
+    
+        <div><div class="ego-0021 tier1 none99 egoback main-ego"></div><p class="egoname font2">쪽빛 지포라이터</p></div>
+        <div><div class="ego-0022 tier3 none99 egoback main-ego"></div><p class="egoname font2">환상통</p></div>
+        <div><div class="ego-0023 tier3 type04 egoback main-ego"></div><p class="egoname font2">벼락가지</p></div>
+        <div><div class="ego-0024 tier3 type03 egoback main-ego"></div><p class="egoname font2">녹아내린 눈알</p></div>
+        <div><div class="ego-0025 tier2 none99 egoback main-ego"></div><p class="egoname font2">잿빛 코트</p></div>
+    
+        <div><div class="ego-0026 tier2 none99 egoback main-ego"></div><p class="egoname font2">대기만성형 타투</p></div>
+        <div><div class="ego-0027 tier2 type13 egoback main-ego"></div><p class="egoname font2">가장 낮은 별</p></div>
+        <div><div class="ego-0028 tier1 none99 egoback main-ego"></div><p class="egoname font2">편견</p></div>
+        <div><div class="ego-0029 tier2 type02 egoback main-ego"></div><p class="egoname font2">작고 나쁠 인형</p></div>
+        <div><div class="ego-0030 tier2 type12 egoback main-ego"></div><p class="egoname font2">수집하는 해골</p></div>
+
+        <!-- 거거던 -->
+
+        <div><div class="ego-0031 tier1 type03 egoback main-ego"></div><p class="egoname font2">닉시 다이버전스</p></div>
+        <div><div class="ego-0032 tier2 type11 egoback main-ego"></div><p class="egoname font2">꿈을 꾸는 전기양</p></div>
+        <div><div class="ego-0033 tier3 type04 egoback main-ego"></div><p class="egoname font2">근무용 통상 배터리</p></div>
+        <div><div class="ego-0034 tier2 type01 egoback main-ego"></div><p class="egoname font2">일점타격논리회로</p></div>
+        <div><div class="ego-0035 tier1 none99 egoback main-ego"></div><p class="egoname font2">저주 인형</p></div>
+
+        <div><div class="ego-0036 tier2 none99 egoback main-ego"></div><p class="egoname font2">카르밀라</p></div>
+        <div><div class="ego-0037 tier2 none99 egoback main-ego"></div><p class="egoname font2">플라스크 속의 아이</p></div>
+        <div><div class="ego-0038 tier3 none99 egoback main-ego"></div><p class="egoname font2">환상 사냥</p></div>
+        <div><div class="ego-0039 tier2 none99 egoback main-ego"></div><p class="egoname font2">귀로</p></div>
+        <div><div class="ego-0040 tier1 none99 egoback main-ego"></div><p class="egoname font2">내일의 운세</p></div>
+
+        <div><div class="ego-0041 tier2 type05 egoback main-ego"></div><p class="egoname font2">적색 지령</p></div>
+        <div><div class="ego-0042 tier3 type02 egoback main-ego"></div><p class="egoname font2">연기와 철조망</p></div>
+        <div><div class="ego-0043 tier2 type07 egoback main-ego"></div><p class="egoname font2">사원증</p></div>
+        <div><div class="ego-0044 tier2 type03 egoback main-ego"></div><p class="egoname font2">진동형 팔찌</p></div>
+        <div><div class="ego-0045 tier4 type01 egoback main-ego"></div><p class="egoname font2">불꽃의 편린</p></div>
+
+        <div><div class="ego-0046 tier2 type06 egoback main-ego"></div><p class="egoname font2">물부리</p></div>
+        <div><div class="ego-0047 tier2 type04 egoback main-ego"></div><p class="egoname font2">가시 올가미</p></div>
+        <div><div class="ego-0048 tier3 type02 egoback main-ego"></div><p class="egoname font2">녹슨 커터 나이프</p></div>
+        <div><div class="ego-0049 tier1 type05 egoback main-ego"></div><p class="egoname font2">가시밭길</p></div>
+        <div><div class="ego-0050 tier4 type02 egoback main-ego"></div><p class="egoname font2">붉게 물든 목화</p></div>
+
+        <div><div class="ego-0051 tier2 type06 egoback main-ego"></div><p class="egoname font2">돌무덤</p></div>
+        <div><div class="ego-0052 tier2 type07 egoback main-ego"></div><p class="egoname font2">휴대용 전지 소켓</p></div>
+        <div><div class="ego-0053 tier3 type01 egoback main-ego"></div><p class="egoname font2">먼지에서 먼지로</p></div>
+        <div><div class="ego-0054 tier2 type05 egoback main-ego"></div><p class="egoname font2">녹아내린 시계태엽</p></div>
+        <div><div class="ego-0055 tier4 type03 egoback main-ego"></div><p class="egoname font2">폭우</p></div>
+
+        <div><div class="ego-0056 tier3 type06 egoback main-ego"></div><p class="egoname font2">네잎클로버</p></div>
+        <div><div class="ego-0057 tier2 type07 egoback main-ego"></div><p class="egoname font2">야간투시경</p></div>
+        <div><div class="ego-0058 tier3 none99 egoback main-ego"></div><p class="egoname font2">디스크 파편</p></div>
+        <div><div class="ego-0059 tier3 type05 egoback main-ego"></div><p class="egoname font2">한겨울 밤의 악몽</p></div>
+        <div><div class="ego-0060 tier4 type04 egoback main-ego"></div><p class="egoname font2">쾌감</p></div>
+
+        <div><div class="ego-0061 tier2 type05 egoback main-ego"></div><p class="egoname font2">유골 부스러기</p></div>
+        <div><div class="ego-0062 tier1 type07 egoback main-ego"></div><p class="egoname font2">이력서</p></div>
+        <div><div class="ego-0063 tier1 type06 egoback main-ego"></div><p class="egoname font2">추억의 펜던트</p></div>
+        <div><div class="ego-0064 tier1 type04 egoback main-ego"></div><p class="egoname font2">부서진 리볼버</p></div>
+        <div><div class="ego-0065 tier4 type05 egoback main-ego"></div><p class="egoname font2">미적 감각</p></div>
+
+        <div><div class="ego-0066 tier2 type06 egoback main-ego"></div><p class="egoname font2">네뷸라이저</p></div>
+        <div><div class="ego-0067 tier3 none99 egoback main-ego"></div><p class="egoname font2">특별 계약</p></div>
+        <div><div class="ego-0068 tier3 none99 egoback main-ego"></div><p class="egoname font2">성대한 환대</p></div>
+        <div><div class="ego-0069 tier1 type07 egoback main-ego"></div><p class="egoname font2">손목 보호대</p></div>
+        <div><div class="ego-0070 tier4 type06 egoback main-ego"></div><p class="egoname font2">명경지수</p></div>
+
+        <div><div class="ego-0071 tier3 type01 egoback main-ego"></div><p class="egoname font2">그을린 원반</p></div>
+        <div><div class="ego-0072 tier3 type07 egoback main-ego"></div><p class="egoname font2">피뢰침</p></div>
+        <div><div class="ego-0073 tier3 type06 egoback main-ego"></div><p class="egoname font2">엔도르핀 키트</p></div>
+        <div><div class="ego-0074 tier1 type05 egoback main-ego"></div><p class="egoname font2">머리 없는 초상화</p></div>
+        <div><div class="ego-0075 tier4 type07 egoback main-ego"></div><p class="egoname font2">충전식 장갑</p></div>
+
+        <div><div class="ego-0076 tier3 none99 egoback main-ego"></div><p class="egoname font2">휴대용 구급상자</p></div>
+        <div><div class="ego-0077 tier2 none99 egoback main-ego"></div><p class="egoname font2">진통제</p></div>
+        <div><div class="ego-0078 tier2 none99 egoback main-ego"></div><p class="egoname font2">게걸스러운 망치</p></div>
+        <div><div class="ego-0079 tier2 none99 egoback main-ego"></div><p class="egoname font2">황금색 항아리</p></div>
+        <div><div class="ego-0080 tier2 none99 egoback main-ego"></div><p class="egoname font2">생존의 이정표</p></div>
+
+        <div><div class="ego-0081 tier4 none99 egoback main-ego"></div><p class="egoname font2">믿음</p></div>
+        <div><div class="ego-0082 tier4 none99 egoback main-ego"></div><p class="egoname font2">인연 조각</p></div>
+        <div><div class="ego-0083 tier5 none99 egoback main-ego"></div><p class="egoname font2">달의 기억</p></div>
+
+        <!-- 호거던 -->
+
+        <div><div class="ego-0086 tier4 none99 egoback main-ego"></div><p class="egoname font2">오래된 조각상</p></div>
+        <div><div class="ego-0087 tier4 none99 egoback main-ego"></div><p class="egoname font2">비밀 유지 서약서</p></div>
+
+        <div><div class="ego-0088 tier2 type03 egoback main-ego"></div><p class="egoname font2">잔향</p></div>
+        <div><div class="ego-0089 tier1 type01 egoback main-ego"></div><p class="egoname font2">타오르는 지성</p></div>
+        <div><div class="ego-0090 tier4 type01 egoback main-ego"></div><p class="egoname font2">진혼</p></div>
+        <div><div class="ego-0091 tier1 type02 egoback main-ego"></div><p class="egoname font2">녹슨 입마개</p></div>
+        <div><div class="ego-0092 tier4 type02 egoback main-ego"></div><p class="egoname font2">피안개</p></div>
+
+        <div><div class="ego-0093 tier3 type03 egoback main-ego"></div><p class="egoname font2">진실의 종</p></div>
+        <div><div class="ego-0094 tier4 type03 egoback main-ego"></div><p class="egoname font2">연성진동</p></div>
+        <div><div class="ego-0095 tier2 type04 egoback main-ego"></div><p class="egoname font2">형광색 램프</p></div>
+        <div><div class="ego-0096 tier4 type04 egoback main-ego"></div><p class="egoname font2">황홀경</p></div>
+        <div><div class="ego-0097 tier3 type05 egoback main-ego"></div><p class="egoname font2">고장난 나침반</p></div>
+
+        <div><div class="ego-0098 tier4 type05 egoback main-ego"></div><p class="egoname font2">검은 악보</p></div>
+        <div><div class="ego-0099 tier1 type06 egoback main-ego"></div><p class="egoname font2">장식된 편자</p></div>
+        <div><div class="ego-0100 tier4 type06 egoback main-ego"></div><p class="egoname font2">복주머니</p></div>
+        <div><div class="ego-0101 tier3 type07 egoback main-ego"></div><p class="egoname font2">물리 간섭 보호장</p></div>
+        <div><div class="ego-0102 tier4 type07 egoback main-ego"></div><p class="egoname font2">제 1종 영구기관</p></div>
+
+        <!-- 폭거던 -->
+
+        <div><div class="ego-0103 tier1 type01 egoback main-ego"></div><p class="egoname font2">융해된 파라핀</p></div>
+        <div><div class="ego-0104 tier1 type01 egoback main-ego"></div><p class="egoname font2">편광</p></div>
+        <div><div class="ego-0105 tier2 type01 egoback main-ego"></div><p class="egoname font2">울화통</p></div>
+        <div><div class="ego-0106 tier3 type01 egoback main-ego"></div><p class="egoname font2">불빛꽃</p></div>
+        <div><div class="ego-0107 tier4 type01 egoback main-ego"></div><p class="egoname font2">업화 조각</p></div>
+
+        <div><div class="ego-0108 tier1 type02 egoback main-ego"></div><p class="egoname font2">억류된 찬송</p></div>
+        <div><div class="ego-0109 tier1 type02 egoback main-ego"></div><p class="egoname font2">옭아맨 타래</p></div>
+        <div><div class="ego-0110 tier2 type02 egoback main-ego"></div><p class="egoname font2">경외심</p></div>
+        <div><div class="ego-0111 tier3 type02 egoback main-ego"></div><p class="egoname font2">안식처</p></div>
+        <div><div class="ego-0112 tier4 type02 egoback main-ego"></div><p class="egoname font2">매혹 조각</p></div>
+
+        <div><div class="ego-0113 tier3 type03 egoback main-ego"></div><p class="egoname font2">생체 맹독 바이알</p></div>
+        <div><div class="ego-0114 tier1 type03 egoback main-ego"></div><p class="egoname font2">극독성 외피</p></div>
+        <div><div class="ego-0115 tier2 type03 egoback main-ego"></div><p class="egoname font2">시큼한 주향</p></div>
+        <div><div class="ego-0116 tier2 type03 egoback main-ego"></div><p class="egoname font2">거울 촉각 공감각</p></div>
+        <div><div class="ego-0117 tier3 type03 egoback main-ego"></div><p class="egoname font2">톱니바퀴 태엽</p></div>
+
+        <div><div class="ego-0118 tier4 type03 egoback main-ego"></div><p class="egoname font2">타성 조각</p></div>
+        <div><div class="ego-0119 tier2 type04 egoback main-ego"></div><p class="egoname font2">유연 화약</p></div>
+        <div><div class="ego-0120 tier1 type04 egoback main-ego"></div><p class="egoname font2">뼈 말뚝</p></div>
+        <div><div class="ego-0121 tier2 type04 egoback main-ego"></div><p class="egoname font2">해진 우산</p></div>
+        <div><div class="ego-0122 tier3 type04 egoback main-ego"></div><p class="egoname font2">죽음바라기</p></div>
+
+        <div><div class="ego-0123 tier4 type04 egoback main-ego"></div><p class="egoname font2">욕망 조각</p></div>
+        <div><div class="ego-0124 tier1 type05 egoback main-ego"></div><p class="egoname font2">고목 함정</p></div>
+        <div><div class="ego-0125 tier1 type05 egoback main-ego"></div><p class="egoname font2">넝마</p></div>
+        <div><div class="ego-0126 tier2 type05 egoback main-ego"></div><p class="egoname font2">장엄</p></div>
+        <div><div class="ego-0127 tier3 type05 egoback main-ego"></div><p class="egoname font2">머나먼 별</p></div>
+
+        <div><div class="ego-0128 tier4 type05 egoback main-ego"></div><p class="egoname font2">잠식 조각</p></div>
+        <div><div class="ego-0129 tier1 type06 egoback main-ego"></div><p class="egoname font2">데블스 셰어</p></div>
+        <div><div class="ego-0130 tier1 type06 egoback main-ego"></div><p class="egoname font2">녹빛 겉날개</p></div>
+        <div><div class="ego-0131 tier2 type06 egoback main-ego"></div><p class="egoname font2">낡은 목각 인형</p></div>
+        <div><div class="ego-0132 tier3 type06 egoback main-ego"></div><p class="egoname font2">미련</p></div>
+
+        <div><div class="ego-0133 tier4 type06 egoback main-ego"></div><p class="egoname font2">교만 조각</p></div>
+        <div><div class="ego-0134 tier1 type07 egoback main-ego"></div><p class="egoname font2">무정전 전원장치</p></div>
+        <div><div class="ego-0135 tier1 type07 egoback main-ego"></div><p class="egoname font2">제한 풀린 제세동기</p></div>
+        <div><div class="ego-0136 tier2 type07 egoback main-ego"></div><p class="egoname font2">순찰용 손전등</p></div>
+        <div><div class="ego-0137 tier3 type07 egoback main-ego"></div><p class="egoname font2">모조발전기</p></div>
+
+        <div><div class="ego-0138 tier4 type07 egoback main-ego"></div><p class="egoname font2">마찰 조각</p></div>
+        <div><div class="ego-0139 tier1 type11 egoback main-ego"></div><p class="egoname font2">수술용 메스</p></div>
+        <div><div class="ego-0140 tier1 type11 egoback main-ego"></div><p class="egoname font2">위장된 화평</p></div>
+        <div><div class="ego-0141 tier2 type11 egoback main-ego"></div><p class="egoname font2">재단용 가위</p></div>
+        <div><div class="ego-0142 tier2 type11 egoback main-ego"></div><p class="egoname font2">결의</p></div>
+
+        <div><div class="ego-0143 tier3 type11 egoback main-ego"></div><p class="egoname font2">선고의 순간</p></div>
+        <div><div class="ego-0144 tier4 type11 egoback main-ego"></div><p class="egoname font2">잘려나간 기억</p></div>
+        <div><div class="ego-0145 tier1 type12 egoback main-ego"></div><p class="egoname font2">목공용 대못</p></div>
+        <div><div class="ego-0146 tier2 type12 egoback main-ego"></div><p class="egoname font2">축복이었던</p></div>
+        <div><div class="ego-0147 tier2 type12 egoback main-ego"></div><p class="egoname font2">찢어진 밴돌리어</p></div>
+
+        <div><div class="ego-0148 tier3 type12 egoback main-ego"></div><p class="egoname font2">벼려진 가지</p></div>
+        <div><div class="ego-0149 tier4 type12 egoback main-ego"></div><p class="egoname font2">구멍난 기억</p></div>
+        <div><div class="ego-0150 tier1 type13 egoback main-ego"></div><p class="egoname font2">동티</p></div>
+        <div><div class="ego-0151 tier2 type13 egoback main-ego"></div><p class="egoname font2">압박 붕대</p></div>
+        <div><div class="ego-0152 tier2 type13 egoback main-ego"></div><p class="egoname font2">시간 굴레</p></div>
+
+        <div><div class="ego-0153 tier3 type13 egoback main-ego"></div><p class="egoname font2">굳게 쥔 상</p></div>
+        <div><div class="ego-0154 tier4 type13 egoback main-ego"></div><p class="egoname font2">바스라진 기억</p></div>
+        <div><div class="ego-0155 tier2 none99 egoback main-ego"></div><p class="egoname font2">오라클</p></div>
+        <div><div class="ego-0156 tier3 none99 egoback main-ego"></div><p class="egoname font2">강요된 무게</p></div>
+
+        <!-- 꿈거던 -->
+
+        <div><div class="ego-0157 tier2 type01 egoback main-ego"></div><p class="egoname font2">만 년 동안 끓는 솥</p></div>
+        
+        <div><div class="ego-0158 tier2 type01 egoback main-ego"></div><p class="egoname font2">만년 화롯불</p></div>
+        <div><div class="ego-0159 tier3 type01 egoback main-ego"></div><p class="egoname font2">요리 비법 전서</p></div>
+        <div><div class="ego-0160 tier4 type01 egoback main-ego"></div><p class="egoname font2">훔쳐온 불꽃</p></div>
+        <div><div class="ego-0161 tier2 type02 egoback main-ego"></div><p class="egoname font2">밀라르카</p></div>
+        <div><div class="ego-0162 tier3 type02 egoback main-ego"></div><p class="egoname font2">찢어진 피주머니</p></div>
+        
+        <div><div class="ego-0163 tier3 type02 egoback main-ego"></div><p class="egoname font2">치성</p></div>
+        <div><div class="ego-0164 tier4 type02 egoback main-ego"></div><p class="egoname font2">출혈성 쇼크</p></div>
+        <div><div class="ego-0165 tier1 type03 egoback main-ego"></div><p class="egoname font2">보석 진동자</p></div>
+        <div><div class="ego-0166 tier2 type03 egoback main-ego"></div><p class="egoname font2">흔들리는 술통</p></div>
+        <div><div class="ego-0167 tier2 type03 egoback main-ego"></div><p class="egoname font2">감합된 톱니바퀴</p></div>
+        
+        <div><div class="ego-0168 tier3 type03 egoback main-ego"></div><p class="egoname font2">진원점</p></div>
+        <div><div class="ego-0169 tier4 type03 egoback main-ego"></div><p class="egoname font2">무진팔방종</p></div>
+        <div><div class="ego-0170 tier2 type04 egoback main-ego"></div><p class="egoname font2">종말의 파편</p></div>
+        <div><div class="ego-0171 tier2 type04 egoback main-ego"></div><p class="egoname font2">가시오랏줄</p></div>
+        <div><div class="ego-0172 tier3 type04 egoback main-ego"></div><p class="egoname font2">기괴한 석상</p></div>
+        
+        <div><div class="ego-0173 tier4 type04 egoback main-ego"></div><p class="egoname font2">파탄</p></div>
+        <div><div class="ego-0174 tier1 type05 egoback main-ego"></div><p class="egoname font2">칸타빌레</p></div>
+        <div><div class="ego-0175 tier2 type05 egoback main-ego"></div><p class="egoname font2">빛바랜 외투</p></div>
+        <div><div class="ego-0176 tier2 type05 egoback main-ego"></div><p class="egoname font2">뒤엉킨 뼛조각</p></div>
+        <div><div class="ego-0177 tier3 type05 egoback main-ego"></div><p class="egoname font2">서지 글로브</p></div>
+
+        <div><div class="ego-0178 tier4 type05 egoback main-ego"></div><p class="egoname font2">덮칠 파도</p></div>
+        <div><div class="ego-0179 tier2 type06 egoback main-ego"></div><p class="egoname font2">어느 날의 기억</p></div>
+        <div><div class="ego-0180 tier2 type06 egoback main-ego"></div><p class="egoname font2">엔젤스 컷</p></div>
+        <div><div class="ego-0181 tier3 type06 egoback main-ego"></div><p class="egoname font2">추억</p></div>
+        <div><div class="ego-0182 tier4 type06 egoback main-ego"></div><p class="egoname font2">케스크 스피리츠</p></div>
+
+        <div><div class="ego-0183 tier2 type07 egoback main-ego"></div><p class="egoname font2">미니어처 전봇대</p></div>
+        <div><div class="ego-0184 tier2 type07 egoback main-ego"></div><p class="egoname font2">1B 타입 팔각 볼트</p></div>
+        <div><div class="ego-0185 tier3 type07 egoback main-ego"></div><p class="egoname font2">인슐레이터</p></div>
+        <div><div class="ego-0186 tier4 type07 egoback main-ego"></div><p class="egoname font2">제 5종 영구기관</p></div>
+        <div><div class="ego-0187 tier2 none99 egoback main-ego"></div><p class="egoname font2">리베이트 토큰</p></div>
+
+        <div><div class="ego-0188 tier2 none99 egoback main-ego"></div><p class="egoname font2">신상품 팜플렛</p></div>
+        <div><div class="ego-0189 tier2 none99 egoback main-ego"></div><p class="egoname font2">특별 카탈로그</p></div>
+        <div><div class="ego-0190 tier3 none99 egoback main-ego"></div><p class="egoname font2">사전 예약 할인권</p></div>
+        <div><div class="ego-0191 tier3 none99 egoback main-ego"></div><p class="egoname font2">리뉴얼 굿즈</p></div>
+        <div><div class="ego-0192 tier3 none99 egoback main-ego"></div><p class="egoname font2">체험형 플랜 가이드</p></div>
+
+        <div><div class="ego-0193 tier3 none99 egoback main-ego"></div><p class="egoname font2">프레스티지 카드</p></div>
+        <div><div class="ego-0194 tier1 none99 egoback main-ego"></div><p class="egoname font2">덧붙인 반창고</p></div>
+        <div><div class="ego-0195 tier1 type11 egoback main-ego"></div><p class="egoname font2">닳고 닳은 숫돌</p></div>
+        <div><div class="ego-0196 tier2 type11 egoback main-ego"></div><p class="egoname font2">짧은 케인 소드</p></div>
+        <div><div class="ego-0197 tier3 type11 egoback main-ego"></div><p class="egoname font2">구름무늬 호리병</p></div>
+
+        <div><div class="ego-0198 tier4 type11 egoback main-ego"></div><p class="egoname font2">깨어진 대검</p></div>
+        <div><div class="ego-0199 tier1 type12 egoback main-ego"></div><p class="egoname font2">고탄성강 신발</p></div>
+        <div><div class="ego-0200 tier2 type12 egoback main-ego"></div><p class="egoname font2">증명의 깃털</p></div>
+        <div><div class="ego-0201 tier3 type12 egoback main-ego"></div><p class="egoname font2">튿어진 소매</p></div>
+        <div><div class="ego-0202 tier4 type12 egoback main-ego"></div><p class="egoname font2">듀엘교본 3권</p></div>
+
+        <div><div class="ego-0203 tier1 type13 egoback main-ego"></div><p class="egoname font2">차원분리수거함</p></div>
+        <div><div class="ego-0204 tier2 type13 egoback main-ego"></div><p class="egoname font2">포켓 암기 노트</p></div>
+        <div><div class="ego-0205 tier3 type13 egoback main-ego"></div><p class="egoname font2">차원지각변환체</p></div>
+        <div><div class="ego-0206 tier4 type13 egoback main-ego"></div><p class="egoname font2">앙갚음 장부</p></div>
+
+        <!-- 이벤트 에깊 -->
+
+        <div><div class="ego-6001 tier2 type04 egoback main-ego"></div><p class="egoname font2">흑단 브로치</p></div>
+        <div><div class="ego-6002 tier3 type02 egoback main-ego"></div><p class="egoname font2">갇힌 구더기</p></div>
+        <div><div class="ego-6003 tier2 none99 egoback main-ego"></div><p class="egoname font2">오더메이드</p></div>
+        <div><div class="ego-6004 tier2 none99 egoback main-ego"></div><p class="egoname font2">귀신 들린 신발</p></div>
+        <div><div class="ego-6005 tier2 type05 egoback main-ego"></div><p class="egoname font2">얼어붙은 아우성</p></div>
+
+        <div><div class="ego-6006 tier4 type05 egoback main-ego"></div><p class="egoname font2">서릿발 발자국</p></div>
+        <div><div class="ego-6007 tier2 type02 egoback main-ego"></div><p class="egoname font2">못과 망치의 책</p></div>
+        <div><div class="ego-6008 tier2 none99 egoback main-ego"></div><p class="egoname font2">핏빛 갈기</p></div>
+        <div><div class="ego-6009 tier2 type02 egoback main-ego"></div><p class="egoname font2">불결함</p></div>
+        <div><div class="ego-6010 tier4 type02 egoback main-ego"></div><p class="egoname font2">완전함</p></div>
+
+        <div><div class="ego-6011 tier3 none99 egoback main-ego"></div><p class="egoname font2">생강꽃 가지</p></div>
+        <div><div class="ego-6012 tier3 none99 egoback main-ego"></div><p class="egoname font2">만화경</p></div>
+        <div><div class="ego-6013 tier2 none99 egoback main-ego"></div><p class="egoname font2">깨진 안경</p></div>
+        <div><div class="ego-6014 tier4 type04 egoback main-ego"></div><p class="egoname font2">부치지 못한 편지</p></div>
+        <div><div class="ego-6015 tier2 none99 egoback main-ego"></div><p class="egoname font2">마을을 지킬 작살</p></div>
+
+        <div><div class="ego-6016 tier4 type06 egoback main-ego"></div><p class="egoname font2">고래의 심장</p></div>
+        <div><div class="ego-6017 tier2 type06 egoback main-ego"></div><p class="egoname font2">작살 의족</p></div>
+        <div><div class="ego-6018 tier4 type06 egoback main-ego"></div><p class="egoname font2">앞을 비추는 가스등</p></div>
+        <div><div class="ego-6019 tier3 none99 egoback main-ego"></div><p class="egoname font2">부서진 바이올린</p></div>
+        <div><div class="ego-6020 tier3 type05 egoback main-ego"></div><p class="egoname font2">모형 저택 오르골</p></div>
+
+        <div><div class="ego-6021 tier3 none99 egoback main-ego"></div><p class="egoname font2">치프 버틀러의 비급서</p></div>
+        <div><div class="ego-6022 tier3 type03 egoback main-ego"></div><p class="egoname font2">손거울</p></div>
+        <div><div class="ego-6023 tier2 none99 egoback main-ego"></div><p class="egoname font2">버틀러식 포박술</p></div>
+        <div><div class="ego-6024 tier4 type05 egoback main-ego"></div><p class="egoname font2">굴절 유리관</p></div>
+        <div><div class="ego-6025 tier3 type02 egoback main-ego"></div><p class="egoname font2">라만차랜드 자유이용권</p></div>
+
+        <div><div class="ego-6026 tier3 type02 egoback main-ego"></div><p class="egoname font2">승리의 증표</p></div>
+        <div><div class="ego-6027 tier2 none99 egoback main-ego"></div><p class="egoname font2">먹어치우는 큐브</p></div>
+        <div><div class="ego-6028 tier4 type02 egoback main-ego"></div><p class="egoname font2">퍼레이드의 가면</p></div>
+        <div><div class="ego-6029 tier3 type01 egoback main-ego"></div><p class="egoname font2">뜨거운 육즙 다리살</p></div>
+        <div><div class="ego-6030 tier3 type04 egoback main-ego"></div><p class="egoname font2">목이 뻑뻑 가슴살</p></div>
+
+        <div><div class="ego-6031 tier3 none99 egoback main-ego"></div><p class="egoname font2">탱고 닭양념장</p></div>
+        <div><div class="ego-6032 tier2 type02 egoback main-ego"></div><p class="egoname font2">오염된 실과 바늘</p></div>
+        <div><div class="ego-6033 tier3 none99 egoback main-ego"></div><p class="egoname font2">날카로운 실과 바늘</p></div>
+        <div><div class="ego-6034 tier1 type03 egoback main-ego"></div><p class="egoname font2">기름때 찌든 스패너</p></div>
+        <div><div class="ego-6035 tier2 none99 egoback main-ego"></div><p class="egoname font2">반짝이는 폐품</p></div>
+
+        <div><div class="ego-6036 tier3 type04 egoback main-ego"></div><p class="egoname font2">크랲게 뇌수 담금주</p></div>
+        <div><div class="ego-6037 tier1 type06 egoback main-ego"></div><p class="egoname font2">털방울 모자</p></div>
+        <div><div class="ego-6038 tier2 type06 egoback main-ego"></div><p class="egoname font2">거대한 선물 보따리</p></div>
+        <div><div class="ego-6039 tier3 none99 egoback main-ego"></div><p class="egoname font2">슬픈 봉제인형</p></div>
+        <div><div class="ego-6040 tier2 none99 egoback main-ego"></div><p class="egoname font2">검은 장부</p></div>
+
+        <div><div class="ego-6041 tier3 type11 egoback main-ego"></div><p class="egoname font2">녹슨 칼자루</p></div>
+        <div><div class="ego-6042 tier3 type02 egoback main-ego"></div><p class="egoname font2">조각난 칼날</p></div>
+        <div><div class="ego-6043 tier3 type06 egoback main-ego"></div><p class="egoname font2">부서진 칼날</p></div>
+        <div><div class="ego-6044 tier3 type11 egoback main-ego"></div><p class="egoname font2">붉은 색술</p></div>
+        <div><div class="ego-6045 tier4 type11 egoback main-ego"></div><p class="egoname font2">장관</p></div>
+
+        <div><div class="ego-6046 tier4 type11 egoback main-ego"></div><p class="egoname font2">부동</p></div>
+        <div><div class="ego-6047 tier4 type06 egoback main-ego"></div><p class="egoname font2">해진 삿갓</p></div>
+        <div><div class="ego-6048 tier4 type11 egoback main-ego"></div><p class="egoname font2">낡은 도포</p></div>
+        <div><div class="ego-6049 tier2 type03 egoback main-ego"></div><p class="egoname font2">은빛 시계 케이스</p></div>
+        <div><div class="ego-6050 tier2 type03 egoback main-ego"></div><p class="egoname font2">빛바랜 시계 케이스</p></div>
+
+        <div><div class="ego-6051 tier2 none99 egoback main-ego"></div><p class="egoname font2">경고장</p></div>
+        <div><div class="ego-6052 tier2 type03 egoback main-ego"></div><p class="egoname font2">에칭 시계침</p></div>
+        <div><div class="ego-6053 tier2 type03 egoback main-ego"></div><p class="egoname font2">녹슨 시계침</p></div>
+        <div><div class="ego-6054 tier3 type03 egoback main-ego"></div><p class="egoname font2">낙수의 잔</p></div>
+        <div><div class="ego-6055 tier3 none99 egoback main-ego"></div><p class="egoname font2">선불 시간 영수증</p></div>
+
+        <div><div class="ego-6056 tier4 type03 egoback main-ego"></div><p class="egoname font2">회중시계 : 타입 L</p></div>
+        <div><div class="ego-6057 tier4 type03 egoback main-ego"></div><p class="egoname font2">회중시계 : 타입 E</p></div>
+        <div><div class="ego-6058 tier4 type03 egoback main-ego"></div><p class="egoname font2">회중시계 : 타입 Y</p></div>
+        <div><div class="ego-6059 tier4 type03 egoback main-ego"></div><p class="egoname font2">회중시계 : 타입 P</p></div>
+        <div><div class="ego-6060 tier1 none99 egoback main-ego"></div><p class="egoname font2">일반석 할인 바우처</p></div>
+
+        <div><div class="ego-6061 tier2 none99 egoback main-ego"></div><p class="egoname font2">아이스크림 통조림</p></div>
+        <div><div class="ego-6062 tier3 type07 egoback main-ego"></div><p class="egoname font2">E식 차원 단검</p></div>
+        <div><div class="ego-6063 tier3 type07 egoback main-ego"></div><p class="egoname font2">휴대용 역장 배터리</p></div>
+        <div><div class="ego-6064 tier2 type07 egoback main-ego"></div><p class="egoname font2">생체 발전형 배터리</p></div>
+        <div><div class="ego-6065 tier2 type07 egoback main-ego"></div><p class="egoname font2">심장 리액트 모듈</p></div>
+
+        <div><div class="ego-6066 tier2 type07 egoback main-ego"></div><p class="egoname font2">의체관절 서보모터</p></div>
+        <div><div class="ego-6067 tier2 none99 egoback main-ego"></div><p class="egoname font2">결정화된 혈액</p></div>
+        <div><div class="ego-6068 tier4 type07 egoback main-ego"></div><p class="egoname font2">자율 작동식 관절</p></div>
+        <div><div class="ego-6069 tier4 type07 egoback main-ego"></div><p class="egoname font2">과충전된 배터리</p></div>
+        <div><div class="ego-6070 tier4 type07 egoback main-ego"></div><p class="egoname font2">영구동력 서보모터</p></div>
+
+        <div><div class="ego-6071 tier4 type07 egoback main-ego"></div><p class="egoname font2">하츠 파워드 쥬얼</p></div>
+        <div><div class="ego-6072 tier2 type02 egoback main-ego"></div><p class="egoname font2">치사랑</p></div>
+        <div><div class="ego-6073 tier2 type07 egoback main-ego"></div><p class="egoname font2">어긋난 트랜지스터</p></div>
+        <div><div class="ego-6074 tier2 type05 egoback main-ego"></div><p class="egoname font2">정신 오염 가속 가스</p></div>
+        <div><div class="ego-6075 tier2 type05 egoback main-ego"></div><p class="egoname font2">흘러내린 엔케팔린</p></div>
+
+        <div><div class="ego-6076 tier3 none99 egoback main-ego"></div><p class="egoname font2">고초</p></div>
+        <div><div class="ego-6077 tier3 none99 egoback main-ego"></div><p class="egoname font2">가시나무 관</p></div>
+        <div><div class="ego-6078 tier3 type05 egoback main-ego"></div><p class="egoname font2">안식</p></div>
+        <div><div class="ego-6079 tier2 none99 egoback main-ego"></div><p class="egoname font2">뱀 허물</p></div>
+        <div><div class="ego-6080 tier4 none99 egoback main-ego"></div><p class="egoname font2">거짓 광배</p></div>
+
+        <div><div class="ego-6081 tier2 none99 egoback main-ego"></div><p class="egoname font2">메트로놈</p></div>
+        <div><div class="ego-6082 tier4 none99 egoback main-ego"></div><p class="egoname font2">굴레</p></div>
+        <div><div class="ego-6083 tier2 none99 egoback main-ego"></div><p class="egoname font2">경멸의 시선의 경멸</p></div>
+        <div><div class="ego-6084 tier4 type01 egoback main-ego"></div><p class="egoname font2">부화하지 않은 불씨</p></div>
+        <div><div class="ego-6085 tier2 none99 egoback main-ego"></div><p class="egoname font2">대양전 접지 플러그</p></div>
+
+        <div><div class="ego-6086 tier4 none99 egoback main-ego"></div><p class="egoname font2">왕의 잔재</p></div>
+        <div><div class="ego-6087 tier1 none99 egoback main-ego"></div><p class="egoname font2">불 꺼진 랜턴</p></div>
+        <div><div class="ego-6088 tier2 none99 egoback main-ego"></div><p class="egoname font2">불 꺼진 촛대</p></div>
+        <div><div class="ego-6089 tier3 none99 egoback main-ego"></div><p class="egoname font2">그림자 괴물</p></div>
+        <div><div class="ego-6090 tier1 none99 egoback main-ego"></div><p class="egoname font2">포장용 상자</p></div>
+
+        <div><div class="ego-6091 tier3 none99 egoback main-ego"></div><p class="egoname font2">포장용 끈</p></div>
+        <div><div class="ego-6092 tier4 none99 egoback main-ego"></div><p class="egoname font2">선물</p></div>
+        <div><div class="ego-6093 tier4 type06 egoback main-ego"></div><p class="egoname font2">기쁜 봉제인형</p></div>
+        <div><div class="ego-6094 tier3 none99 egoback main-ego"></div><p class="egoname font2">묵시적 계약 갱신</p></div>
+        <div><div class="ego-6095 tier3 type12 egoback main-ego"></div><p class="egoname font2">흑염 파이프</p></div>
+
+        <div><div class="ego-6096 tier3 type12 egoback main-ego"></div><p class="egoname font2">평등</p></div>
+        <div><div class="ego-6097 tier2 none99 egoback main-ego"></div><p class="egoname font2">신속한 지휘</p></div>
+        <div><div class="ego-6098 tier2 type06 egoback main-ego"></div><p class="egoname font2">톱니 파편</p></div>
+        <div><div class="ego-6099 tier3 type06 egoback main-ego"></div><p class="egoname font2">근접 전술 교본</p></div>
+        <div><div class="ego-6100 tier3 type01 egoback main-ego"></div><p class="egoname font2">점화 장갑</p></div>
+
+        <div><div class="ego-6101 tier3 type04 egoback main-ego"></div><p class="egoname font2">가시 전투화</p></div>
+        <div><div class="ego-6102 tier3 type01 egoback main-ego"></div><p class="egoname font2">재점화 플러그</p></div>
+        <div><div class="ego-6103 tier3 type04 egoback main-ego"></div><p class="egoname font2">강화제 Mk.4</p></div>
+        <div><div class="ego-6104 tier3 type01 egoback main-ego"></div><p class="egoname font2">잔불</p></div>
+        <div><div class="ego-6105 tier3 type04 egoback main-ego"></div><p class="egoname font2">잔가지</p></div>
+
+        <div><div class="ego-6106 tier3 none99 egoback main-ego"></div><p class="egoname font2">통상 작전용 장비</p></div>
+        <div><div class="ego-6107 tier3 none99 egoback main-ego"></div><p class="egoname font2">작전 승인 카드</p></div>
+        <div><div class="ego-6108 tier4 none99 egoback main-ego"></div><p class="egoname font2">고위험 작전용 장비</p></div>
+        <div><div class="ego-6109 tier3 none99 egoback main-ego"></div><p class="egoname font2">원목 술잔</p></div>
+        <div><div class="ego-6110 tier3 none99 egoback main-ego"></div><p class="egoname font2">낡은 칼자루</p></div>
+
+        <div><div class="ego-6111 tier4 type02 egoback main-ego"></div><p class="egoname font2">절경</p></div>
+        <div><div class="ego-6112 tier4 type11 egoback main-ego"></div><p class="egoname font2">탁마</p></div>
+        <div><div class="ego-6113 tier4 type11 egoback main-ego"></div><p class="egoname font2">떼구름</p></div>
+        <div><div class="ego-6114 tier2 type13 egoback main-ego"></div><p class="egoname font2">강화 문신 - 중지</p></div>
+        <div><div class="ego-6115 tier2 type04 egoback main-ego"></div><p class="egoname font2">괴문자 부적</p></div>
+
+        <div><div class="ego-6116 tier2 type04 egoback main-ego"></div><p class="egoname font2">묘각</p></div>
+        <div><div class="ego-6117 tier3 type13 egoback main-ego"></div><p class="egoname font2">의리 사슬</p></div>
+        <div><div class="ego-6118 tier3 type04 egoback main-ego"></div><p class="egoname font2">새겨넣어진 괴문자</p></div>
+        <div><div class="ego-6119 tier3 type11 egoback main-ego"></div><p class="egoname font2">그림자 삿갓</p></div>
+        <div><div class="ego-6120 tier4 type13 egoback main-ego"></div><p class="egoname font2">영속하는 인연사슬</p></div>
+
+        <div><div class="ego-6121 tier4 type04 egoback main-ego"></div><p class="egoname font2">이전칠자</p></div>
+        <div><div class="ego-6122 tier3 none99 egoback main-ego"></div><p class="egoname font2">찰랑이는 연료통</p></div>
+        
+      </div>
+    </div>
+  </div> 
+</body>
+
+</html>
